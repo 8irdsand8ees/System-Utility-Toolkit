@@ -20,14 +20,25 @@ def create_note():
 
     print("Note saved")
 
+def read_notes():
+
+    if os.path.exists("notes.txt"):
+
+         with open("notes.txt", "r") as file:
+             print(file.read())
+
+    else:
+        prin("No notes fountd.")
+
 
 while True:
 
     print("\nTool Kit v0.3")
     print("1. System Info")
     print("2. File List")
-    ptint("3. Create Note")
-    print("4. Exit")
+    print("3. Create Note")
+    print("4. Read Notes")
+    print("5. Exit")
 
     choice =  input("> ")
 
@@ -41,6 +52,9 @@ while True:
         create_note()
 
     elif choice == "4":
+        read_notes()
+ 
+    elif choice == "5":
         print("Exiting...")
         break
 
