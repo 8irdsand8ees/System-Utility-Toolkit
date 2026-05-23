@@ -1,9 +1,19 @@
 import platform
 import os
 
+
+def system_info():
+    print(platform.system())
+    print(platform.version())
+
+
+def file_list():
+   print(os.listdir("."))
+
+
 while True:
 
-    print("\nTool Kit v0.2")
+    print("\nTool Kit v0.3")
     print("1. System Info")
     print("2. File List")
     print("3. Exit")
@@ -11,11 +21,10 @@ while True:
     choice =  input("> ")
 
     if choice == "1":
-        print(platform.system())
-        print(platform.version())
+        system_info()
 
     elif choice =="2":
-        print(os.listdir("."))
+        file_list()
 
     elif choice == "3":
         print("Exiting...")
@@ -23,3 +32,4 @@ while True:
 
     else:
         print("Invalid option")
+
