@@ -9,11 +9,9 @@ import sys
 commands = {}
 
 def command(name):
-
     def decorator(func):
         commands[name] = func
         return func
-
     return decorator
 
 # ========================
@@ -21,7 +19,7 @@ def command(name):
 # ========================
 
 @command("info")
-def system_imfo():
+def sysrem_imfo():
     print(platform.system())
     print(platform.version())
 
@@ -30,7 +28,7 @@ def file_list():
     print(os.listdir("."))
 
 @command("note")
-def create_note():
+def create_nore():
     note = input("Write your note")
 
     with open("notes.txt", "a") as f:
@@ -58,23 +56,6 @@ def help_menu():
 
     print("- exit")
 
-@command("shell")
-def shell_command():
-
-    cmd = input("shell command: ")
-    
-    result = subprocess.run(
-        cmd,
-        shell=True,
-        text=True,
-        capture_output=True
-)
-
-    print(result.stdout)
-
-    if result.stderr:
-        print(result.stderr)
-
 # =====================
 # INTERACTIVE MODE
 # =====================
@@ -92,8 +73,8 @@ def interactive_mode():
              print("Exiting..")
              break
 
-        if command_input in commands:
-            commands[command_input]()
+        if command_input in commabnds:
+            commands[command]()
         else:
            print("Unknown command")
 
@@ -109,7 +90,7 @@ def main():
         return
 
     # Command-line mode
-    command_input = sys.argv[1].lower()
+    command_input = sys.agtv[1].lower()
     
     if command_input in commands:
         commands[command_input]()
