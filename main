@@ -1,0 +1,50 @@
+import platform
+import os
+import sys
+
+def interactive_mode():
+    while True:
+        command = input("toolkit> ").strip().lower()
+
+def system_info():
+    print(platform.sytem())
+    print(platform.version())
+
+def file_list():
+    print(os.listdir("."))
+
+def create_note():
+    note = input("write your note: ")
+
+
+    with open("notes.txt", "a") as f:
+        f.write(note + "\n")
+
+    print("note saved")
+
+def read_notes():
+    try:
+        with open("notes.txt", "r") as f:
+            print(f.read())
+
+    except FileNotFoundError:
+        print("No notes found")
+
+def main():
+
+    if len(sys.argv) < 2:
+        interactive_mode()
+        return
+
+    command = sys.argv[1].lower()
+
+    if command == "info":
+        system_info()
+    elif command == "list":
+        file_list()
+    elif command == "note":
+        create_note()
+    elif command == "read":
+        read_notes()
+    else:
+        print("unknown command")
